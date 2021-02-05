@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{comment}
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+\usepackage{csquotes}
+\addbibresource{RSC_.bib} %C8SC04228D
+
+
+\title{CS 260 Project Proposal}
+\author{William Chou, Bobby Judd, and Rob Lavroff }
+\date{February 2021}
+
+\begin{document}
+
+\maketitle
+
+Due to traditional computational chemistry methods' need for parallel algorithms on high performance clusters, machine learning has been of great interest in the field for over a decade. Density functional theory, the industry standard for quantum chemistry, scales with $O(n^3)$, where n is the number of electrons in the system.
+
+Barzilay, et al, have proposed a graph convolutional neural network (GCNN) model which predicts the products of chemical reactions with 85\% accuracy \cite{C8SC04228D}. GCNNs are an excellent choice for chemical transformations because they can be combinatorially invariant (permutation of the nodes of the input graph does not affect the output) or equivariant (permutation of the input permutes the output). Treating atoms as nodes and bonds as edges, we can simply think of these transformations as equivariant permutations of the graph.
+
+The paper in which this model is presented focuses on reactions in organic chemistry, as organic molecules tend to be small and obey very standard rules of chemical bonding. For this project, we would like to test the limits of this neural network by applying it to inorganic clusters. By introducing metals with high electron-count and less rigid bonding rules, we can test and report changes in the performance of the model when put outside of its comfort zone.
+
+Lawrence Berkeley National Laboratory's materialsproject.org hosts 131,613 inorganic compounds, a well structured dataset with consistently reported features. We intend to use two subsets of these compounds, size to-be-determined, to train and test the GCNN. Unlike in the paper, we will test only known reactions in inorganic chemistry so that accuracy is easily shown.
+
+The model from the paper leverages TensorFlow, NumPy, RDKit, and Django and can be found here: \url{https://github.com/connorcoley/rexgen_direct}
+
+\medskip
+
+\centering \textbf{References}
+
+\medskip
+
+C. W. Coley , W. Jin , L. Rogers , T. F. Jamison , T. S. Jaakkola , W. H. Green , R. Barzilay and K. F. Jensen , Chem. Sci., 2019, 10 , 370 —377
+
+\end{document}
